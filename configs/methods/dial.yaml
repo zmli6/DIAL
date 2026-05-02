@@ -1,0 +1,119 @@
+# DIAL hyperparameters (paper Appendix `app:hyperparams-details`).
+gate:
+  explore_rate: 0.5             # ε in Bernoulli explore phase
+  min_cal_points: 50            # transition threshold = N_explore steps
+  window_size: 500              # sliding-window cap on the calibration buffer
+  utility_threshold: 0.05       # U > τ → label as positive
+
+  # Feature pool / regularization
+  max_features: 10              # post-LASSO cap on selected features
+  max_llm_features: 5           # features the LLM proposes per cycle
+  num_cycles: 1                 # 1 cycle = single LLM reflection (paper default)
+  use_feedback: false           # set true for the multi-cycle ablation
+  reflect_backend: local        # 'local' (vLLM) or 'openrouter'
+  threshold_mode: adaptive_lambda
+  regularizer: l1
+
+# Per-env sections override `environment` and `proposer` for each task.
+hotpotqa:
+  environment:
+    name: hotpotqa
+    type: hotpotqa
+    max_steps: 10
+    variant: default            # 'default' | 'infopoor' | 'inforich'
+  proposer:
+    mode: llm_api
+    llm_config:
+      api_type: vllm
+      model_name: Qwen/Qwen3-4B-Instruct-2507
+      temperature: 0.0
+      max_tokens: 256
+  rollout:
+    horizon: 5
+    samples: 3
+    temperature: 0.7
+
+apps:
+  environment:
+    name: apps
+    type: apps
+    max_steps: 6
+  proposer:
+    mode: llm_api
+    llm_config:
+      api_type: vllm
+      model_name: Qwen/Qwen3-4B-Instruct-2507
+      temperature: 0.0
+      max_tokens: 1024
+  rollout:
+    horizon: 3
+    samples: 3
+    temperature: 0.7
+
+webshop:
+  environment:
+    name: webshop
+    type: webshop
+    max_steps: 30
+  proposer:
+    mode: llm_api
+    llm_config:
+      api_type: vllm
+      model_name: Qwen/Qwen3-4B-Instruct-2507
+      temperature: 0.0
+      max_tokens: 256
+  rollout:
+    horizon: 5
+    samples: 3
+    temperature: 0.7
+
+fever:
+  environment:
+    name: fever
+    type: fever
+    max_steps: 8
+  proposer:
+    mode: llm_api
+    llm_config:
+      api_type: vllm
+      model_name: Qwen/Qwen3-4B-Instruct-2507
+      temperature: 0.0
+      max_tokens: 256
+  rollout:
+    horizon: 4
+    samples: 3
+    temperature: 0.7
+
+twexpress:
+  environment:
+    name: twexpress
+    type: twexpress
+    max_steps: 30
+  proposer:
+    mode: llm_api
+    llm_config:
+      api_type: vllm
+      model_name: Qwen/Qwen3-4B-Instruct-2507
+      temperature: 0.0
+      max_tokens: 256
+  rollout:
+    horizon: 5
+    samples: 3
+    temperature: 0.7
+
+plancraft:
+  environment:
+    name: plancraft
+    type: plancraft
+    max_steps: 30
+  proposer:
+    mode: llm_api
+    llm_config:
+      api_type: vllm
+      model_name: Qwen/Qwen3-4B-Instruct-2507
+      temperature: 0.0
+      max_tokens: 256
+  rollout:
+    horizon: 5
+    samples: 3
+    temperature: 0.7
