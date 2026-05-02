@@ -235,18 +235,6 @@ DIAL has three stages. **(1) Explore:** at each step, with probability ε=0.5 tr
 
 For details and proofs, see the paper or [`docs/method.md`](docs/method.md).
 
----
-
-## Citation
-
-```bibtex
-@inproceedings{dial2026,
-  title     = {Same Signal, Opposite Meaning: Why Adaptive Compute Fails Across Environments},
-  author    = {Anonymous},
-  booktitle = {NeurIPS},
-  year      = {2026}
-}
-```
 
 ---
 
