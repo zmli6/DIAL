@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dial"
+version = "0.1.0"
+description = "Direction-Informed Adaptive Learning for test-time compute gating in LLM agents."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "DIAL authors"}]
+keywords = ["llm", "agents", "test-time-compute", "adaptive-compute", "gating"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "scikit-learn>=1.3",
+    "pyyaml>=6.0",
+    "tqdm>=4.65",
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+inference = ["vllm>=0.5", "torch>=2.1", "transformers>=4.38", "accelerate>=0.27"]
+hotpotqa  = ["datasets>=2.14"]
+apps      = ["datasets>=2.14"]
+fever     = ["datasets>=2.14"]
+twexpress = ["textworld_express"]
+plancraft = ["plancraft"]
+dev       = ["pytest>=7.4", "pytest-xdist", "ruff", "mypy"]
+
+[project.scripts]
+dial-bench = "dial.benchmark.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["dial*"]
+exclude = ["tests*", "experiments*", "examples*", "notebooks*"]

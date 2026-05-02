@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+build/
+dist/
+.eggs/
+
+# Local env / IDE
+.env
+.venv/
+venv/
+.idea/
+.vscode/
+
+# Output
+results/
+logs/
+slurm-*.out
+slurm-*.err
+
+# Large local caches
+.cache/
+hf_cache/
+*.npz
+*.pkl

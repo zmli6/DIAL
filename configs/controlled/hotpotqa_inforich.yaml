@@ -1,0 +1,27 @@
+# Section 5.3 P2: HotpotQA with gold supporting paragraphs prepended to
+# the prompt at reset — forces Type-D (decision-difficult) regime.
+gate:
+  explore_rate: 0.5
+  min_cal_points: 50
+  window_size: 500
+  utility_threshold: 0.05
+  max_features: 10
+  max_llm_features: 5
+
+hotpotqa:
+  environment:
+    name: hotpotqa
+    type: hotpotqa
+    max_steps: 10
+    variant: inforich
+  proposer:
+    mode: llm_api
+    llm_config:
+      api_type: vllm
+      model_name: Qwen/Qwen3-4B-Instruct-2507
+      temperature: 0.0
+      max_tokens: 256
+  rollout:
+    horizon: 5
+    samples: 3
+    temperature: 0.7
