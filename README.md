@@ -61,7 +61,7 @@ Optional environment-specific dependencies (lazy-loaded; install only what you n
 |---|---|
 | HotpotQA  | `pip install datasets` + `bash scripts/data/download_hotpotqa.sh` |
 | APPS      | `pip install datasets` |
-| WebShop   | `bash scripts/data/install_webshop.sh` (requires `WEBSHOP_ROOT`) |
+| WebShop   | `pip install -e ".[webshop]"` + `bash scripts/data/install_webshop.sh` (also installs OpenJDK + spaCy model; see [`docs/INSTALL.md`](docs/INSTALL.md#webshop)) |
 | FEVER     | `pip install datasets` |
 | TWExpress | `pip install textworld_express` |
 | Plancraft | `pip install plancraft` |
