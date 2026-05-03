@@ -36,6 +36,20 @@ apps      = ["datasets>=2.14"]
 fever     = ["datasets>=2.14"]
 twexpress = ["textworld_express"]
 plancraft = ["plancraft"]
+# WebShop has heavier system requirements — see scripts/data/install_webshop.sh
+# for the upstream-clone + Java + spaCy-model setup that this group does not cover.
+webshop   = [
+    "gym==0.26.2",
+    "beautifulsoup4",
+    "cleantext",
+    "flask",
+    "pyserini",
+    "rank_bm25",
+    "selenium",
+    "spacy",
+    "thefuzz",
+    "rich",
+]
 dev       = ["pytest>=7.4", "pytest-xdist", "ruff", "mypy"]
 
 [project.scripts]
